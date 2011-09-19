@@ -10,7 +10,7 @@
 		990520051427382200E8B8EC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990520041427382200E8B8EC /* Cocoa.framework */; };
 		9905200F1427382200E8B8EC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9905200D1427382200E8B8EC /* InfoPlist.strings */; };
 		990520131427382200E8B8EC /* RKSyntaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 990520121427382200E8B8EC /* RKSyntaxView.m */; };
-		999A90CC1427436900B48D46 /* NSColor+HexRGB.h in Headers */ = {isa = PBXBuildFile; fileRef = 999A90CA1427436900B48D46 /* NSColor+HexRGB.h */; };
+		999A90CC1427436900B48D46 /* NSColor+HexRGB.h in Headers */ = {isa = PBXBuildFile; fileRef = 999A90CA1427436900B48D46 /* NSColor+HexRGB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		999A90CD1427436900B48D46 /* NSColor+HexRGB.m in Sources */ = {isa = PBXBuildFile; fileRef = 999A90CB1427436900B48D46 /* NSColor+HexRGB.m */; };
 		99C345D614276BD700B6AA23 /* RKSyntaxView.h in Headers */ = {isa = PBXBuildFile; fileRef = 990520111427382200E8B8EC /* RKSyntaxView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -238,6 +238,7 @@
 		990520171427382200E8B8EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -254,6 +255,7 @@
 		990520181427382200E8B8EC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
