@@ -1,0 +1,279 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		990520051427382200E8B8EC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990520041427382200E8B8EC /* Cocoa.framework */; };
+		9905200F1427382200E8B8EC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9905200D1427382200E8B8EC /* InfoPlist.strings */; };
+		990520131427382200E8B8EC /* RKSyntaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 990520121427382200E8B8EC /* RKSyntaxView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		990520011427382200E8B8EC /* RKSyntaxView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RKSyntaxView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		990520041427382200E8B8EC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		990520071427382200E8B8EC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		990520081427382200E8B8EC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		990520091427382200E8B8EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9905200C1427382200E8B8EC /* RKSyntaxView-Info.plist */ = {isa = PBXFileReference; path = "RKSyntaxView-Info.plist"; sourceTree = "<group>"; };
+		9905200E1427382200E8B8EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		990520101427382200E8B8EC /* RKSyntaxView-Prefix.pch */ = {isa = PBXFileReference; path = "RKSyntaxView-Prefix.pch"; sourceTree = "<group>"; };
+		990520111427382200E8B8EC /* RKSyntaxView.h */ = {isa = PBXFileReference; path = RKSyntaxView.h; sourceTree = "<group>"; };
+		990520121427382200E8B8EC /* RKSyntaxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RKSyntaxView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		99051FFD1427382200E8B8EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				990520051427382200E8B8EC /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		99051FF51427382200E8B8EC = {
+			isa = PBXGroup;
+			children = (
+				9905200A1427382200E8B8EC /* RKSyntaxView */,
+				990520031427382200E8B8EC /* Frameworks */,
+				990520021427382200E8B8EC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		990520021427382200E8B8EC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				990520011427382200E8B8EC /* RKSyntaxView.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		990520031427382200E8B8EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				990520041427382200E8B8EC /* Cocoa.framework */,
+				990520061427382200E8B8EC /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		990520061427382200E8B8EC /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				990520071427382200E8B8EC /* AppKit.framework */,
+				990520081427382200E8B8EC /* CoreData.framework */,
+				990520091427382200E8B8EC /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		9905200A1427382200E8B8EC /* RKSyntaxView */ = {
+			isa = PBXGroup;
+			children = (
+				990520111427382200E8B8EC /* RKSyntaxView.h */,
+				990520121427382200E8B8EC /* RKSyntaxView.m */,
+				9905200B1427382200E8B8EC /* Supporting Files */,
+			);
+			path = RKSyntaxView;
+			sourceTree = "<group>";
+		};
+		9905200B1427382200E8B8EC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9905200C1427382200E8B8EC /* RKSyntaxView-Info.plist */,
+				9905200D1427382200E8B8EC /* InfoPlist.strings */,
+				990520101427382200E8B8EC /* RKSyntaxView-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		99051FFE1427382200E8B8EC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		990520001427382200E8B8EC /* RKSyntaxView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 990520161427382200E8B8EC /* Build configuration list for PBXNativeTarget "RKSyntaxView" */;
+			buildPhases = (
+				99051FFC1427382200E8B8EC /* Sources */,
+				99051FFD1427382200E8B8EC /* Frameworks */,
+				99051FFE1427382200E8B8EC /* Headers */,
+				99051FFF1427382200E8B8EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RKSyntaxView;
+			productName = RKSyntaxView;
+			productReference = 990520011427382200E8B8EC /* RKSyntaxView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		99051FF71427382200E8B8EC /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 99051FFA1427382200E8B8EC /* Build configuration list for PBXProject "RKSyntaxView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 99051FF51427382200E8B8EC;
+			productRefGroup = 990520021427382200E8B8EC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				990520001427382200E8B8EC /* RKSyntaxView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		99051FFF1427382200E8B8EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9905200F1427382200E8B8EC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		99051FFC1427382200E8B8EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				990520131427382200E8B8EC /* RKSyntaxView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9905200D1427382200E8B8EC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9905200E1427382200E8B8EC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		990520141427382200E8B8EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		990520151427382200E8B8EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		990520171427382200E8B8EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RKSyntaxView/RKSyntaxView-Prefix.pch";
+				INFOPLIST_FILE = "RKSyntaxView/RKSyntaxView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		990520181427382200E8B8EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RKSyntaxView/RKSyntaxView-Prefix.pch";
+				INFOPLIST_FILE = "RKSyntaxView/RKSyntaxView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		99051FFA1427382200E8B8EC /* Build configuration list for PBXProject "RKSyntaxView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				990520141427382200E8B8EC /* Debug */,
+				990520151427382200E8B8EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		990520161427382200E8B8EC /* Build configuration list for PBXNativeTarget "RKSyntaxView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				990520171427382200E8B8EC /* Debug */,
+				990520181427382200E8B8EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 99051FF71427382200E8B8EC /* Project object */;
+}
