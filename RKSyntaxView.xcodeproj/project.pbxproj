@@ -10,6 +10,9 @@
 		990520051427382200E8B8EC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 990520041427382200E8B8EC /* Cocoa.framework */; };
 		9905200F1427382200E8B8EC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9905200D1427382200E8B8EC /* InfoPlist.strings */; };
 		990520131427382200E8B8EC /* RKSyntaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 990520121427382200E8B8EC /* RKSyntaxView.m */; };
+		999A90CC1427436900B48D46 /* NSColor+HexRGB.h in Headers */ = {isa = PBXBuildFile; fileRef = 999A90CA1427436900B48D46 /* NSColor+HexRGB.h */; };
+		999A90CD1427436900B48D46 /* NSColor+HexRGB.m in Sources */ = {isa = PBXBuildFile; fileRef = 999A90CB1427436900B48D46 /* NSColor+HexRGB.m */; };
+		99C345D614276BD700B6AA23 /* RKSyntaxView.h in Headers */ = {isa = PBXBuildFile; fileRef = 990520111427382200E8B8EC /* RKSyntaxView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,8 @@
 		990520101427382200E8B8EC /* RKSyntaxView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RKSyntaxView-Prefix.pch"; sourceTree = "<group>"; };
 		990520111427382200E8B8EC /* RKSyntaxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RKSyntaxView.h; sourceTree = "<group>"; };
 		990520121427382200E8B8EC /* RKSyntaxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RKSyntaxView.m; sourceTree = "<group>"; };
+		999A90CA1427436900B48D46 /* NSColor+HexRGB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+HexRGB.h"; sourceTree = "<group>"; };
+		999A90CB1427436900B48D46 /* NSColor+HexRGB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+HexRGB.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +81,8 @@
 		9905200A1427382200E8B8EC /* RKSyntaxView */ = {
 			isa = PBXGroup;
 			children = (
+				999A90CA1427436900B48D46 /* NSColor+HexRGB.h */,
+				999A90CB1427436900B48D46 /* NSColor+HexRGB.m */,
 				990520111427382200E8B8EC /* RKSyntaxView.h */,
 				990520121427382200E8B8EC /* RKSyntaxView.m */,
 				9905200B1427382200E8B8EC /* Supporting Files */,
@@ -100,6 +107,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99C345D614276BD700B6AA23 /* RKSyntaxView.h in Headers */,
+				999A90CC1427436900B48D46 /* NSColor+HexRGB.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				990520131427382200E8B8EC /* RKSyntaxView.m in Sources */,
+				999A90CD1427436900B48D46 /* NSColor+HexRGB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +244,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RKSyntaxView/RKSyntaxView-Prefix.pch";
 				INFOPLIST_FILE = "RKSyntaxView/RKSyntaxView-Info.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -248,6 +259,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RKSyntaxView/RKSyntaxView-Prefix.pch";
 				INFOPLIST_FILE = "RKSyntaxView/RKSyntaxView-Info.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -272,6 +284,7 @@
 				990520181427382200E8B8EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
