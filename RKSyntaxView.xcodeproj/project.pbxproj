@@ -18,10 +18,10 @@
 		990520071427382200E8B8EC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		990520081427382200E8B8EC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		990520091427382200E8B8EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		9905200C1427382200E8B8EC /* RKSyntaxView-Info.plist */ = {isa = PBXFileReference; path = "RKSyntaxView-Info.plist"; sourceTree = "<group>"; };
+		9905200C1427382200E8B8EC /* RKSyntaxView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RKSyntaxView-Info.plist"; sourceTree = "<group>"; };
 		9905200E1427382200E8B8EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		990520101427382200E8B8EC /* RKSyntaxView-Prefix.pch */ = {isa = PBXFileReference; path = "RKSyntaxView-Prefix.pch"; sourceTree = "<group>"; };
-		990520111427382200E8B8EC /* RKSyntaxView.h */ = {isa = PBXFileReference; path = RKSyntaxView.h; sourceTree = "<group>"; };
+		990520101427382200E8B8EC /* RKSyntaxView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RKSyntaxView-Prefix.pch"; sourceTree = "<group>"; };
+		990520111427382200E8B8EC /* RKSyntaxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RKSyntaxView.h; sourceTree = "<group>"; };
 		990520121427382200E8B8EC /* RKSyntaxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RKSyntaxView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
