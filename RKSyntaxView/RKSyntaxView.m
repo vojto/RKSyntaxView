@@ -13,7 +13,6 @@
 
 @synthesize scheme=_scheme;
 @synthesize syntax=_syntax;
-@synthesize content=_content;
 
 #pragma mark - Lifecycle
 
@@ -29,7 +28,6 @@
 }
 
 - (void)_setup {
-    self.content = [[[NSMutableAttributedString alloc] init] autorelease];
     [self setTextContainerInset:NSMakeSize(10.0, 10.0)];
     [self highlight];
     
@@ -38,7 +36,6 @@
 }
 
 - (void) dealloc {
-    self.content = nil;
     [super dealloc];
 }
 
@@ -49,7 +46,7 @@
 }
 
 - (void)_textDidChange:(NSNotification *)notif {
-    [self highlight];
+    [self highlightChangedRange];
 }
 
 #pragma mark - Scheme
@@ -84,6 +81,12 @@
     return font;
 }
 
+- (NSInteger) _defaultSize {
+    NSInteger defaultSize = [(NSNumber *)[self.scheme objectForKey:@"size"] integerValue];
+    if (!defaultSize) defaultSize = 12;
+    return defaultSize;
+}
+
 #pragma mark - Syntax
 
 - (void)loadSyntax:(NSString *)syntaxFilename {
@@ -94,27 +97,48 @@
 #pragma mark - Highlighting
 
 - (void) highlight {
-    self.content = [[NSMutableAttributedString alloc] initWithString:[self string]];
-    [self.content release];
+//    self.content = [[NSMutableAttributedString alloc] initWithString:[self string]];
+//    [self.content release];
     
     NSColor *background = [self _colorFor:@"background"];
+    NSInteger defaultSize = [self _defaultSize];
+    NSFont *defaultFont = [self _fontOfSize:defaultSize bold:NO];
     [self setBackgroundColor:background];
     [(NSScrollView *)self.superview setBackgroundColor:background];
     [self setTextColor:[self _colorFor:@"default"]];
+    [self setFont:defaultFont];
     
-    return [self highlightRange:NSMakeRange(0, [self.content length])];
+    NSMutableAttributedString *shadowContent = [[NSMutableAttributedString alloc] initWithString:[self string]];
+    [self highlightRange:NSMakeRange(0, [[self string] length]) content:shadowContent];
+    NSTextStorage *storage = [self textStorage];
+    NSRange range = NSMakeRange(0, [shadowContent length]);
+    [shadowContent enumerateAttributesInRange:range options:0 usingBlock:^(NSDictionary *attributes, NSRange range, BOOL *stop){
+        [storage setAttributes:attributes range:range];
+    }];
+    [shadowContent release];
 }
 
-- (void) highlightRange:(NSRange)range {
+- (void)highlightChangedRange {
+    NSRange range = [self rangeForUserTextChange];
+    NSRange lineRange = [[self string] lineRangeForRange:range];
+    NSTimeInterval timestamp = [[NSDate date] timeIntervalSinceReferenceDate];
+    if (!_lastDocumentHighlight || (timestamp - _lastDocumentHighlight) > 999) { // This doesn't really work as expected. 
+        [self highlight];
+        _lastDocumentHighlight = timestamp;
+    } else {
+        [self highlightRange:lineRange content:[self textStorage]];
+    }
+}
+
+- (void) highlightRange:(NSRange)range content:(NSMutableAttributedString *)content {
     NSColor *defaultColor = [self _colorFor:@"default"];
-    NSInteger defaultSize = [(NSNumber *)[self.scheme objectForKey:@"size"] integerValue];
-    if (!defaultSize) defaultSize = 12;
+    NSInteger defaultSize = [self _defaultSize];
     NSFont *defaultFont = [self _fontOfSize:defaultSize bold:NO];
-    [self _setFont:defaultFont range:range];
-    [self _setTextColor:defaultColor range:range];
-    [self _setBackgroundColor:[NSColor clearColor] range:range];
+    [self _setFont:defaultFont range:range content:content];
+    [self _setTextColor:defaultColor range:range content:content];
+    [self _setBackgroundColor:[NSColor clearColor] range:range content:content];
     
-    NSString *string = [self.content string];
+    NSString *string = [content string];
     
     for (NSString *type in [self.syntax allKeys]) {
         NSDictionary *params = [self.syntax objectForKey:type];
@@ -133,37 +157,26 @@
         NSArray *matches = [expr matchesInString:string options:0 range:range];
         for (NSTextCheckingResult *match in matches) {
             NSRange range = patternGroup ? [match rangeAtIndex:patternGroup] : [match range];
-            [self _setTextColor:color range:range];
-            if (backgroundColor) [self _setBackgroundColor:backgroundColor range:range];
-            [self _setFont:font range:range];
+            [self _setTextColor:color range:range content:content];
+            if (backgroundColor) [self _setBackgroundColor:backgroundColor range:range content:content];
+            [self _setFont:font range:range content:content];
         }
     }
-    
-    [self _reflect];
 }
 
 #pragma mark - Changing text attributes
 
-- (void) _setTextColor:(NSColor *)color range:(NSRange)range {
+- (void) _setTextColor:(NSColor *)color range:(NSRange)range content:(NSMutableAttributedString *)content {
     if (!color) return;
-    [self.content addAttribute:NSForegroundColorAttributeName value:color range:range];
+    [content addAttribute:NSForegroundColorAttributeName value:color range:range];
 }
 
-- (void) _setBackgroundColor:(NSColor *)color range:(NSRange)range {
-    [self.content addAttribute:NSBackgroundColorAttributeName value:color range:range];
+- (void) _setBackgroundColor:(NSColor *)color range:(NSRange)range content:(NSMutableAttributedString *)content {
+    [content addAttribute:NSBackgroundColorAttributeName value:color range:range];
 }
 
-- (void) _setFont:(NSFont *)font range:(NSRange)range {
-    [self.content addAttribute:NSFontAttributeName value:font range:range];
-}
-
-- (void) _reflect {
-    NSTextStorage *storage = [self textStorage];
-    NSAttributedString *content = self.content;
-    NSRange range = NSMakeRange(0, [content length]);
-    [content enumerateAttributesInRange:range options:0 usingBlock:^(NSDictionary *attributes, NSRange range, BOOL *stop){
-        [storage setAttributes:attributes range:range];
-    }];
+- (void) _setFont:(NSFont *)font range:(NSRange)range content:(NSMutableAttributedString *)content {
+    [content addAttribute:NSFontAttributeName value:font range:range];
 }
 
 @end

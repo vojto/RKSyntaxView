@@ -7,16 +7,20 @@
 //
 
 
+// TODO:
+// this view uses observing of `string` (content) to run whole-document
+// highlight. If your text view is configured to update with each keystroke,
+// that could be a problem. 
+
 @interface RKSyntaxView : NSTextView {
     NSDictionary *_scheme;
     NSDictionary *_syntax;
     
-    NSMutableAttributedString *_content;
+    NSTimeInterval _lastDocumentHighlight;
 }
 
 @property (retain) NSDictionary *scheme;
 @property (retain) NSDictionary *syntax;
-@property (retain) NSMutableAttributedString *content;
 
 - (void) _setup;
 
@@ -25,21 +29,22 @@
 
 #pragma mark - Highlighting
 - (void) highlight;
-- (void) highlightRange:(NSRange)range;
+- (void) highlightChangedRange;
+- (void) highlightRange:(NSRange)range content:(NSMutableAttributedString *)content;
 
 #pragma mark - Scheme
 - (void) loadScheme:(NSString *)schemeFilename;
 - (NSColor *) _colorFor:(NSString *)key;
 - (NSFont *) _font;
 - (NSFont *) _fontOfSize:(NSInteger)size bold:(BOOL)wantsBold;
+- (NSInteger) _defaultSize;
 
 #pragma mark - Syntax
 - (void) loadSyntax:(NSString *)syntaxFilename;
 
 #pragma mark - Changing text attributes
-- (void) _setTextColor:(NSColor *)color range:(NSRange)range;
-- (void) _setBackgroundColor:(NSColor *)color range:(NSRange)range;
-- (void) _setFont:(NSFont *)font range:(NSRange)range;
-- (void) _reflect;
+- (void) _setTextColor:(NSColor *)color range:(NSRange)range content:(NSMutableAttributedString *)content;
+- (void) _setBackgroundColor:(NSColor *)color range:(NSRange)range content:(NSMutableAttributedString *)content;
+- (void) _setFont:(NSFont *)font range:(NSRange)range content:(NSMutableAttributedString *)content;
 
 @end
