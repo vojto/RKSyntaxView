@@ -179,4 +179,11 @@
     [content addAttribute:NSFontAttributeName value:font range:range];
 }
 
+#pragma mark - Pasting
+
+- (void)paste:(id)sender {
+    [super paste:sender];
+    [self highlight];
+}
+
 @end
