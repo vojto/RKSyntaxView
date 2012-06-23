@@ -13,11 +13,24 @@
 
 @synthesize scheme=_scheme;
 @synthesize syntax=_syntax;
+@synthesize defaultSchemePath, defaultSyntaxPath;
 
 #pragma mark - Lifecycle
 
 - (id)init {
     if ((self = [super init])) {
+        [self _setup];
+    }
+    return self;
+}
+
+- (id) initWithDefaultSchemePath:(NSString *)schemePath andSyntaxPath:(NSString *)syntaxPath {
+    self = [super init];
+    if (self) {
+        [self setDefaultSchemePath:schemePath];
+        [self setDefaultSyntaxPath:syntaxPath];
+        [self loadScheme:[self defaultSchemePath]];
+        [self loadSyntax:[self defaultSyntaxPath]];
         [self _setup];
     }
     return self;
@@ -35,6 +48,8 @@
 }
 
 - (void) dealloc {
+    [defaultSyntaxPath release];
+    [defaultSchemePath release];
     [super dealloc];
 }
 
@@ -51,14 +66,21 @@
 #pragma mark - Scheme
 
 - (void)loadScheme:(NSString *)schemeFilename {
-    NSString *schemePath = [[NSBundle mainBundle] pathForResource:schemeFilename ofType:@"plist" inDirectory:nil];
-    self.scheme = [NSDictionary dictionaryWithContentsOfFile:schemePath];
+    if (schemeFilename) {
+        NSString *schemePath = [[NSBundle mainBundle] pathForResource:schemeFilename ofType:@"plist" inDirectory:nil];
+        self.scheme = [NSDictionary dictionaryWithContentsOfFile:schemePath];
+    }
 }
 
 - (NSColor *) _colorFor:(NSString *)key {
-    if (![self scheme]) {
-        [self loadScheme:@"PageScheme"];
-        [self loadSyntax:@"PageSyntax"];
+    if (![self scheme] || ![self syntax]) {
+        if ([self defaultSyntaxPath] && [self defaultSchemePath]) {
+            [self loadSyntax:[self defaultSyntaxPath]];
+            [self loadScheme:[self defaultSchemePath]];
+        } else {
+            [self loadScheme:@"PageScheme"];
+            [self loadSyntax:@"PageSyntax"];
+        }
     }
     NSString *colorCode = [[self.scheme objectForKey:@"colors"] objectForKey:key];
     if (!colorCode) return nil;
@@ -93,8 +115,10 @@
 #pragma mark - Syntax
 
 - (void)loadSyntax:(NSString *)syntaxFilename {
-    NSString *schemePath = [[NSBundle mainBundle] pathForResource:syntaxFilename ofType:@"plist" inDirectory:nil];
-    self.syntax = [NSDictionary dictionaryWithContentsOfFile:schemePath];
+    if (syntaxFilename) {
+        NSString *schemePath = [[NSBundle mainBundle] pathForResource:syntaxFilename ofType:@"plist" inDirectory:nil];
+        self.syntax = [NSDictionary dictionaryWithContentsOfFile:schemePath];
+    }
 }
 
 #pragma mark - Highlighting
