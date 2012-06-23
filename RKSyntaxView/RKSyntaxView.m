@@ -30,7 +30,6 @@
 - (void)_setup {
     [self setTextContainerInset:NSMakeSize(10.0, 10.0)];
     [self highlight];
-    
     [self addObserver:self forKeyPath:@"string" options:0 context:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_textDidChange:) name:NSTextDidChangeNotification object:self];
 }
@@ -57,6 +56,10 @@
 }
 
 - (NSColor *) _colorFor:(NSString *)key {
+    if (![self scheme]) {
+        [self loadScheme:@"PageScheme"];
+        [self loadSyntax:@"PageSyntax"];
+    }
     NSString *colorCode = [[self.scheme objectForKey:@"colors"] objectForKey:key];
     if (!colorCode) return nil;
     NSColor *color = [NSColor colorFromHexRGB:colorCode];
