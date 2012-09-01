@@ -94,14 +94,9 @@
     [self setTextColor:[self _colorFor:@"default"]];
     [self setFont:defaultFont];
     
-    NSMutableAttributedString *shadowContent = [[NSMutableAttributedString alloc] initWithString:[self string]];
-    [self highlightRange:NSMakeRange(0, [[self string] length]) content:shadowContent];
-    NSTextStorage *storage = [self textStorage];
-    NSRange range = NSMakeRange(0, [shadowContent length]);
-    [shadowContent enumerateAttributesInRange:range options:0 usingBlock:^(NSDictionary *attributes, NSRange range, BOOL *stop){
-        [storage setAttributes:attributes range:range];
-    }];
-    [shadowContent release];
+    NSMutableAttributedString *textStorage = [self textStorage];
+    NSRange range = NSMakeRange(0, [textStorage length]);
+    [self highlightRange:range content:textStorage];
 }
 
 - (void)highlightChangedRange {
