@@ -19,7 +19,6 @@
 		990520011427382200E8B8EC /* RKSyntaxView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RKSyntaxView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		990520041427382200E8B8EC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		990520071427382200E8B8EC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		990520081427382200E8B8EC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		990520091427382200E8B8EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9905200C1427382200E8B8EC /* RKSyntaxView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RKSyntaxView-Info.plist"; sourceTree = "<group>"; };
 		9905200E1427382200E8B8EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -72,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				990520071427382200E8B8EC /* AppKit.framework */,
-				990520081427382200E8B8EC /* CoreData.framework */,
 				990520091427382200E8B8EC /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
