@@ -16,13 +16,6 @@
 
 #pragma mark - Lifecycle
 
-- (id)init {
-    if ((self = [super init])) {
-        [self _setup];
-    }
-    return self;
-}
-
 - (void)awakeFromNib {
     [self _setup];
 }
@@ -33,10 +26,6 @@
     
     [self addObserver:self forKeyPath:@"string" options:0 context:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_textDidChange:) name:NSTextDidChangeNotification object:self];
-}
-
-- (void) dealloc {
-    [super dealloc];
 }
 
 #pragma mark - Handling text changes
@@ -97,9 +86,6 @@
 #pragma mark - Highlighting
 
 - (void) highlight {
-//    self.content = [[NSMutableAttributedString alloc] initWithString:[self string]];
-//    [self.content release];
-    
     NSColor *background = [self _colorFor:@"background"];
     NSInteger defaultSize = [self _defaultSize];
     NSFont *defaultFont = [self _fontOfSize:defaultSize bold:NO];
