@@ -108,14 +108,9 @@
     [self setTextColor:[self _colorFor:@"default"]];
     [self setFont:defaultFont];
     
-    NSMutableAttributedString *shadowContent = [[NSMutableAttributedString alloc] initWithString:[self string]];
-    [self highlightRange:NSMakeRange(0, [[self string] length]) content:shadowContent];
-    NSTextStorage *storage = [self textStorage];
-    NSRange range = NSMakeRange(0, [shadowContent length]);
-    [shadowContent enumerateAttributesInRange:range options:0 usingBlock:^(NSDictionary *attributes, NSRange range, BOOL *stop){
-        [storage setAttributes:attributes range:range];
-    }];
-    [shadowContent release];
+    NSMutableAttributedString *textStorage = [self textStorage];
+    NSRange range = NSMakeRange(0, [textStorage length]);
+    [self highlightRange:range content:textStorage];
 }
 
 - (void)highlightChangedRange {
@@ -149,16 +144,20 @@
         NSColor *backgroundColor = [self _colorFor:backgroundColorName];
         NSInteger size = [(NSNumber *)[params objectForKey:@"size"] integerValue];
         BOOL isBold = [(NSNumber *)[params objectForKey:@"isBold"] boolValue];
-        NSFont *font = [self _fontOfSize:(size?size:defaultSize) bold:isBold];
+        NSFont *font = [self _fontOfSize:(size ? size : defaultSize) bold:isBold];
         NSInteger patternGroup = [(NSNumber *)[params objectForKey:@"patternGroup"] integerValue];
         
         NSError *error = nil;
-        NSRegularExpression *expr = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive|NSRegularExpressionAnchorsMatchLines error:&error];
+        NSRegularExpression *expr = [NSRegularExpression regularExpressionWithPattern:pattern options:(NSRegularExpressionCaseInsensitive | NSRegularExpressionAnchorsMatchLines) error:&error]; // FIXME: We need to cache the compiled NSRegularExpression objects
         NSArray *matches = [expr matchesInString:string options:0 range:range];
         for (NSTextCheckingResult *match in matches) {
             NSRange range = patternGroup ? [match rangeAtIndex:patternGroup] : [match range];
             [self _setTextColor:color range:range content:content];
-            if (backgroundColor) [self _setBackgroundColor:backgroundColor range:range content:content];
+            if (backgroundColor) {
+				[self _setBackgroundColor:backgroundColor
+									range:range
+								  content:content];
+			}
             [self _setFont:font range:range content:content];
         }
     }
