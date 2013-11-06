@@ -36,7 +36,7 @@
 - (void) loadScheme:(NSString *)schemeFilename;
 - (NSColor *) _colorFor:(NSString *)key;
 - (NSFont *) _font;
-- (NSFont *) _fontOfSize:(NSInteger)size bold:(BOOL)wantsBold;
+- (NSFont *) _fontOfSize:(NSInteger)size bold:(BOOL)wantsBold italic:(BOOL)wantsItalic;
 - (NSInteger) _defaultSize;
 
 #pragma mark - Syntax
