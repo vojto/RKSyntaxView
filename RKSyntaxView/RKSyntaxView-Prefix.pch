@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'RKSyntaxView' target in the 'RKSyntaxView' project
-//
-
-#ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
-#endif

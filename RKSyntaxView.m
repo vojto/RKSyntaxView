@@ -11,9 +11,6 @@
 
 @implementation RKSyntaxView
 
-@synthesize scheme=_scheme;
-@synthesize syntax=_syntax;
-
 #pragma mark - Lifecycle
 
 - (id)init {
