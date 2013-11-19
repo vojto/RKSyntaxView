@@ -1,6 +1,6 @@
 //
 //  RKSyntaxView.m
-//  
+//
 //
 //  Created by Vojto Rinik on 8/24/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
@@ -64,16 +64,22 @@
 }
 
 - (NSFont *) _font {
-    return [self _fontOfSize:12 bold:NO];
+    return [self _fontOfSize:12 bold:NO italic:NO];
 }
 
-- (NSFont *) _fontOfSize:(NSInteger)size bold:(BOOL)wantsBold {
+- (NSFont *) _fontOfSize:(NSInteger)size bold:(BOOL)wantsBold italic:(BOOL)wantsItalic {
     NSString *fontName = [self.scheme objectForKey:@"font"];
     NSFont *font = [NSFont fontWithName:fontName size:size];
     if (!font) font = [NSFont systemFontOfSize:size];
     
     if (wantsBold) {
         NSFontTraitMask traits = NSBoldFontMask;
+        NSFontManager *manager = [NSFontManager sharedFontManager];
+        font = [manager fontWithFamily:fontName traits:traits weight:5.0 size:size];
+    }
+    
+    if (wantsItalic) {
+        NSFontTraitMask traits = NSItalicFontMask;
         NSFontManager *manager = [NSFontManager sharedFontManager];
         font = [manager fontWithFamily:fontName traits:traits weight:5.0 size:size];
     }
@@ -97,12 +103,12 @@
 #pragma mark - Highlighting
 
 - (void) highlight {
-//    self.content = [[NSMutableAttributedString alloc] initWithString:[self string]];
-//    [self.content release];
+    //    self.content = [[NSMutableAttributedString alloc] initWithString:[self string]];
+    //    [self.content release];
     
     NSColor *background = [self _colorFor:@"background"];
     NSInteger defaultSize = [self _defaultSize];
-    NSFont *defaultFont = [self _fontOfSize:defaultSize bold:NO];
+    NSFont *defaultFont = [self _fontOfSize:defaultSize bold:NO italic:NO];
     [self setBackgroundColor:background];
     [(NSScrollView *)self.superview setBackgroundColor:background];
     [self setTextColor:[self _colorFor:@"default"]];
@@ -117,7 +123,7 @@
     NSRange range = [self rangeForUserTextChange];
     NSRange lineRange = [[self string] lineRangeForRange:range];
     NSTimeInterval timestamp = [[NSDate date] timeIntervalSinceReferenceDate];
-    if (!_lastDocumentHighlight || (timestamp - _lastDocumentHighlight) > 999) { // This doesn't really work as expected. 
+    if (!_lastDocumentHighlight || (timestamp - _lastDocumentHighlight) > 999) { // This doesn't really work as expected.
         [self highlight];
         _lastDocumentHighlight = timestamp;
     } else {
@@ -128,7 +134,7 @@
 - (void) highlightRange:(NSRange)range content:(NSMutableAttributedString *)content {
     NSColor *defaultColor = [self _colorFor:@"default"];
     NSInteger defaultSize = [self _defaultSize];
-    NSFont *defaultFont = [self _fontOfSize:defaultSize bold:NO];
+    NSFont *defaultFont = [self _fontOfSize:defaultSize bold:NO italic:NO];
     [self _setFont:defaultFont range:range content:content];
     [self _setTextColor:defaultColor range:range content:content];
     [self _setBackgroundColor:[NSColor clearColor] range:range content:content];
@@ -144,7 +150,8 @@
         NSColor *backgroundColor = [self _colorFor:backgroundColorName];
         NSInteger size = [(NSNumber *)[params objectForKey:@"size"] integerValue];
         BOOL isBold = [(NSNumber *)[params objectForKey:@"isBold"] boolValue];
-        NSFont *font = [self _fontOfSize:(size ? size : defaultSize) bold:isBold];
+        BOOL isItalic = [[params objectForKey:@"isItalic"] boolValue];
+        NSFont *font = [self _fontOfSize:(size ? size : defaultSize) bold:isBold italic:isItalic];
         NSInteger patternGroup = [(NSNumber *)[params objectForKey:@"patternGroup"] integerValue];
         
         NSError *error = nil;
