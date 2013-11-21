@@ -128,6 +128,10 @@
     }
 }
 
+- (void)highlightRange:(NSRange)range {
+    [self highlightRange:range content:self.textStorage];
+}
+
 - (void) highlightRange:(NSRange)range content:(NSMutableAttributedString *)content {
     NSColor *defaultColor = [self _colorFor:@"default"];
     NSInteger defaultSize = [self _defaultSize];

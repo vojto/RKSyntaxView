@@ -30,6 +30,7 @@
 #pragma mark - Highlighting
 - (void) highlight;
 - (void) highlightChangedRange;
+- (void)highlightRange:(NSRange)range;
 - (void) highlightRange:(NSRange)range content:(NSMutableAttributedString *)content;
 
 #pragma mark - Scheme
