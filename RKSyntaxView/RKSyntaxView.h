@@ -22,6 +22,12 @@
 @property (retain) NSDictionary *scheme;
 @property (retain) NSDictionary *syntax;
 
+@property (nonatomic, retain) NSString* defaultSchemePath;
+@property (nonatomic, retain) NSString* defaultSyntaxPath;
+
+
+- (id) initWithDefaultSchemePath:(NSString *)schemePath andSyntaxPath:(NSString *)syntaxPath; // do not use with Nibs
+
 - (void) _setup;
 
 #pragma mark - Handling text change
@@ -46,5 +52,8 @@
 - (void) _setTextColor:(NSColor *)color range:(NSRange)range content:(NSMutableAttributedString *)content;
 - (void) _setBackgroundColor:(NSColor *)color range:(NSRange)range content:(NSMutableAttributedString *)content;
 - (void) _setFont:(NSFont *)font range:(NSRange)range content:(NSMutableAttributedString *)content;
+
+
+
 
 @end
